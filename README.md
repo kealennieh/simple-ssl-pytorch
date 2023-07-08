@@ -1,6 +1,36 @@
 ## 1. Introduction
 This is a simple project with self-supervised learning models, which is built on top of pytorch.
 
+```
+.
+|
+|---configs          # config file
+|
+|---datasets         # datast api
+|
+|---docs
+|
+|---models           # all the parts of models
+|    |
+|    |
+|    |---backbone
+|    |
+|    |---loss
+|    |
+|    |---model
+|    |
+|
+|---scripts          # shell scripts to execute
+|
+|---tools            # python tools to start training, testing, etc
+|
+|---utils            # useful functions
+|
+|---README.md
+|
+|---requirements.txt
+|
+```
 
 ## 2. Usage
 ```
