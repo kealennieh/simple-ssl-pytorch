@@ -1,0 +1,26 @@
+model:
+  name: "SimCLRV2"
+  backbone:
+    name: "Resnet50"
+    pretrained: false
+  projection_dim: 128
+
+train:
+  tag: "simclr_v2_1shot"
+  batch_size: 4
+  num_workers: 2
+  total_epoch: 12
+  lr: 0.01
+
+  # dataset
+  dataset: "DebugDataset"
+
+  # loss
+  loss:
+    name: NTXentLoss
+    temperature: 0.5
+
+  # log and save
+  num_iter_log: 10
+  num_epoch_save_model: 2
+  base_save_dir: "./work_dirs"

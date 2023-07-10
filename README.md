@@ -44,7 +44,8 @@ bash ./scripts/start_train.sh
 
 ## 3. Model
 - [x] SimCLR
-- [ ] MoCo
+- [x] SimCLRV2
+- [x] MoCo
 - [ ] BYOL
 - [ ] SimSiam
 

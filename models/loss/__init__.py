@@ -1,4 +1,5 @@
 from .nt_xent_loss import NTXentLoss
+from .moco_nce_loss import MoCoNCELoss
 
 
 LOSS_FACTORY_DICT = dict()
@@ -21,3 +22,4 @@ def build_loss(name, loss_config):
 
 
 register_loss("NTXentLoss", NTXentLoss)
+register_loss("MoCoNCELoss", MoCoNCELoss)
