@@ -1,6 +1,8 @@
 from .simclr import SimCLR
 from .simclr_v2 import SimCLRV2
 from .moco import MoCo
+from .simsiam import SimSiam
+from .byol import BYOL
 
 
 MODEL_FACTORY_DICT = dict()
@@ -25,3 +27,5 @@ def build_model(name, model_config):
 register_model("SimCLR", SimCLR)
 register_model("SimCLRV2", SimCLRV2)
 register_model("MoCo", MoCo)
+register_model("SimSiam", SimSiam)
+register_model("BYOL", BYOL)

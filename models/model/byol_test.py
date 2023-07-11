@@ -1,18 +1,20 @@
 """
-python ./models/model/simclr_v2_test.py
+python ./models/model/byol_test.py
 """
 
 import torch
-from simclr_v2 import SimCLRV2
+from byol import BYOL
 
 
 def test():
     config = {
         "backbone": {"name": "Resnet50", "pretrained": False},
-        "projection_dim": 128,
+        "projection_dim": 256,
+        "hidden_dim": 4096,
+        "tau": 0.996,
     }
 
-    model = SimCLRV2(config)
+    model = BYOL(config)
 
     x1 = torch.rand(4, 3, 224, 224)
     x2 = torch.rand(4, 3, 224, 224)

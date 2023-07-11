@@ -1,24 +1,25 @@
 """
-python ./models/model/moco_test.py
+python ./models/model/simsiam_test.py
 """
 
 import torch
-from moco import MoCo
+from simsiam import SimSiam
 
 
 def test():
     config = {
         "backbone": {"name": "Resnet50", "pretrained": False},
         "projection_dim": 128,
-        "momentum": 0.999,
+        "hidden_proj_dim": 1024,
+        "hidden_pred_dim": 1024,
     }
 
-    model = MoCo(config)
+    model = SimSiam(config)
 
-    x_q = torch.rand(4, 3, 224, 224)
-    x_k = torch.rand(4, 3, 224, 224)
+    x1 = torch.rand(4, 3, 224, 224)
+    x2 = torch.rand(4, 3, 224, 224)
 
-    x = (x_q, x_k)
+    x = (x1, x2)
 
     result = model(x)
 

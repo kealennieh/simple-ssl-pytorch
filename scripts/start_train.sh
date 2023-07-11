@@ -9,3 +9,11 @@
 # moco
 python ./tools/train_model.py \
     --config ./configs/moco_cfg.yaml
+
+# simsiam
+# python ./tools/train_model.py \
+#     --config ./configs/simsiam_cfg.yaml
+
+# byol
+# python ./tools/train_model.py \
+#     --config ./configs/byol_cfg.yaml
