@@ -8,17 +8,9 @@ This is a simple project with self-supervised learning models, which is built on
 |
 |---datasets         # datast api
 |
-|---docs
+|---docs             # document folder
 |
 |---models           # all the parts of models
-|    |
-|    |
-|    |---backbone
-|    |
-|    |---loss
-|    |
-|    |---model
-|    |
 |
 |---scripts          # shell scripts to execute
 |
@@ -46,8 +38,11 @@ bash ./scripts/start_train.sh
 - [x] SimCLR
 - [x] SimCLRV2
 - [x] MoCo
-- [ ] BYOL
-- [ ] SimSiam
+- [x] MoCoV2
+- [x] MoCoV3
+- [x] BYOL
+- [x] SimSiam
+- [x] Barlow Twins
 
 
 ## 4. Other

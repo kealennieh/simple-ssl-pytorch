@@ -1,7 +1,8 @@
 from .nt_xent_loss import NTXentLoss
-from .moco_nce_loss import MoCoNCELoss
+from .moco_nce_loss import MoCoNCELoss, MoCoV3NCELoss
 from .neg_cos_loss import NegCosLoss
 from .mean_squared_loss import MeanSquaredLoss
+from .barlow_twins_loss import BarlowTwinsLoss
 
 
 LOSS_FACTORY_DICT = dict()
@@ -25,5 +26,7 @@ def build_loss(name, loss_config):
 
 register_loss("NTXentLoss", NTXentLoss)
 register_loss("MoCoNCELoss", MoCoNCELoss)
+register_loss("MoCoV3NCELoss", MoCoV3NCELoss)
 register_loss("NegCosLoss", NegCosLoss)
 register_loss("MeanSquaredLoss", MeanSquaredLoss)
+register_loss("BarlowTwinsLoss", BarlowTwinsLoss)

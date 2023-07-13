@@ -4,10 +4,10 @@ import torch.nn as nn
 from models.backbone import build_backbone
 
 
-class MoCo(nn.Module):
+class MoCoV2(nn.Module):
     """
-    MoCo: Momentum Contrast
-    Link: https://arxiv.org/abs/1911.05722
+    MoCo v2: Momentum Contrast v2
+    Link: https://arxiv.org/abs/2003.04297
     Implementation: https://github.com/facebookresearch/moco
     """
 
@@ -20,7 +20,7 @@ class MoCo(nn.Module):
         backbone = build_backbone(backbone_name, config["backbone"])
         feature_size = backbone.get_feature_size()
 
-        projector = nn.Linear(feature_size, projection_dim)
+        projector = Projector(feature_size, feature_size, projection_dim)
         self.encoder_q = nn.Sequential(backbone, projector)
 
         self.encoder_k = copy.deepcopy(self.encoder_q)
@@ -65,3 +65,19 @@ class MoCo(nn.Module):
     @torch.no_grad()
     def _batch_unshuffle_single_gpu(self, x, idx_unshuffle):
         return x[idx_unshuffle]
+
+
+class Projector(nn.Module):
+    def __init__(self, in_dim, hidden_dim=None, out_dim=128):
+        super().__init__()
+        if hidden_dim == None:
+            hidden_dim = in_dim
+        self.layer1 = nn.Sequential(
+            nn.Linear(in_dim, hidden_dim),
+            nn.ReLU(inplace=True),
+            nn.Linear(hidden_dim, out_dim),
+        )
+
+    def forward(self, x):
+        x = self.layer1(x)
+        return x

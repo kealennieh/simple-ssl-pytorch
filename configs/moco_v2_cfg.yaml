@@ -1,0 +1,29 @@
+model:
+  name: "MoCoV2"
+  backbone:
+    name: "Resnet50"
+    pretrained: false
+  projection_dim: 128
+  momentum: 0.999
+
+train:
+  tag: "moco_v2_1shot"
+  batch_size: 4
+  num_workers: 2
+  total_epoch: 12
+  lr: 0.01
+
+  # dataset
+  dataset: "DebugDataset"
+
+  # loss
+  loss:
+    name: MoCoNCELoss
+    projection_dim: 128
+    memory_bank_size: 65536
+    temperature: 0.07
+
+  # log and save
+  num_iter_log: 10
+  num_epoch_save_model: 2
+  base_save_dir: "./work_dirs"
