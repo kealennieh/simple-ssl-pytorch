@@ -3,28 +3,30 @@ python ./models/model/moco_test.py
 """
 
 import torch
+import unittest
 from moco import MoCo
 
 
-def test():
-    config = {
-        "backbone": {"name": "Resnet50", "pretrained": False},
-        "projection_dim": 128,
-        "momentum": 0.999,
-    }
+class TestMoCo(unittest.TestCase):
+    def test_moco(self):
+        config = {
+            "backbone": {"name": "Resnet50", "pretrained": False},
+            "projection_dim": 128,
+            "momentum": 0.999,
+        }
 
-    model = MoCo(config)
+        model = MoCo(config)
 
-    x_q = torch.rand(4, 3, 224, 224)
-    x_k = torch.rand(4, 3, 224, 224)
+        x_q = torch.rand(4, 3, 224, 224)
+        x_k = torch.rand(4, 3, 224, 224)
 
-    x = (x_q, x_k)
+        x = (x_q, x_k)
 
-    result = model(x)
+        result = model(x)
 
-    z1 = result[0]
-    print(z1)
+        z1 = result[0]
+        print(z1)
 
 
 if __name__ == "__main__":
-    test()
+    unittest.main()
